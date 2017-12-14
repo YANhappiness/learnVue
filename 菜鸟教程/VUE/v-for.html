@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>v-for循环</title>
+    <script type="text/javascript" src="https://cdn.bootcss.com/vue/2.2.2/vue.min.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <ul>
+            <li v-for="people in peoples">   <!--peoples 绑定在需要循环的节点上peoples所有数组， -->
+                {{people.name}}   <!--people 当前遍历的数组 -->
+                <br/>
+                {{people}}
+                <br/>
+                {{peoples}}
+            </li>
+        </ul>
+        <ol>
+            <li v-for="site in sites">   
+                {{site}}    <!-- 当数据存放在对象中时返回整个对象 -->
+                <br/>
+                {{sites}}
+            </li>
+        </ol>
+        <ul>
+            <li v-for="(value,key) in sites">   <!-- 将对象的key，value返回 第二个参数为键名-->
+                {{key}}:{{value}}
+            </li>
+        </ul>
+
+        <ul>
+            <li v-for="(value,key,index) in sites">   <!-- 第三个参数为序号 index-->
+                {{index +1}}.{{key}}:{{value}}
+            </li>
+        </ul>
+
+        <ul>
+            <li v-for="n in 10">
+                {{n}}
+            </li>
+        </ul>
+
+        <!-- v-for循环分别为循环对象和数组 -->
+        <!-- 循环数组时： v-for(arr in array) 通过arr.name遍历数组内对象-->
+        <!-- 1.循环对象时：v-for(obj in object) obj即对象的value值 -->
+        <!-- 循环对象时存在3个参数：v-for((vuele,key,index)in object) 第一个值为对象的value值，第二个值为对象的key值，第三个参数为拓展的索引值-->
+    </div>
+
+    <script type="text/javascript">
+        new Vue({
+            el:"#app",
+            data:{ 
+                peoples:[   //数组
+                    {"name":'baidu'},
+                    {"name":'google'},
+                    {"name":'yoho'},
+                    {"name":'wangyi'},
+                    {"name":'mook'},
+                ],
+                sites:{    //对象
+                    name:'baidu',
+                    url:'www.baidu.com',
+                    describe:"baidu when you don`t know!"
+                }
+                    
+            }
+        })
+    </script>
+</body>
+</html>

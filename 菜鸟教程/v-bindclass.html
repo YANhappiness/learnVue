@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>v-bind:class</title>
+    <script type="text/javascript" src="https://cdn.bootcss.com/vue/2.2.2/vue.min.js"></script>
+    <style>
+    	.classA{
+    		text-decoration-line: underline;
+    	}
+    	.classB{
+    		background-color: yellow;
+    	}
+    	.classC{
+    		color:#ccc;
+    	}
+    	.banana{
+    		margin: 10px;
+    	}
+    </style>
+</head>
+<body>
+	<div id="app">
+		<div :class="{classA:classA}">helllllo</div><!-- 	   
+		- 1.v-bind:属性绑定;{对象}内key为data数据源内数据(静态变量变量名);value为该data变量名是否存在 -->	
+		<div :class="[classA,classB]">heeeeeelloooo</div>  
+		<!-- - 2. [数组]内数据即为data数据源内变量名的value值 如果value存在 -->
+		<div :class="[classA,{classB:classB,classC:classC}]">heeeeelllllloooo</div>
+		<!-- 3。混写 ： 分别为字符串或者布尔值   [数组]中为字符串,{对象}中为布尔值判断是否展现该字符串“class” -->
+	</div>	
+
+	<script type="text/javascript">
+		new Vue({
+			el:"#app",
+			data:{
+				classA:true,
+				classB:"banana",
+				classC:true,
+			}
+		})
+	</script>
+</body>
+</html>
