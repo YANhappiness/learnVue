@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>v-if、v-else条件语句</title>
+	<script type="text/javascript" src="https://cdn.bootcss.com/vue/2.2.2/vue.min.js"></script>
+</head>
+<body>
+	<div id="app">
+		<div v-if="Math.random() >0.5">
+			hello this value \> 0.5
+		</div>
+		<div v-else>
+			value < 0.5
+		</div>
+	</div>
+
+	<script type="text/javascript">
+		// v-if、v-else 判断是否显示标签
+		new Vue({
+			el:"#app"
+		})
+	</script>
+</body>
+</html>

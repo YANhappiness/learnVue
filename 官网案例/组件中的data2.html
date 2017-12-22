@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>组件中的data</title>
+    <script src="https://cdn.bootcss.com/vue/2.2.2/vue.min.js"></script>
+</head>
+<body>
+    <div id="app">
+        <simple-component></simple-component>
+        <simple-component></simple-component>
+        <simple-component></simple-component>
+    </div>
+
+    <script type="text/javascript">
+        // 组件中的data必须是一个函数
+        data = {"counter":0};   //此处的data为一个对象  三个对象组件共享了同一个data对象，所以都会递增
+        Vue.component("simple-component",{
+            template:'<button v-on:click = "counter++">{{counter}}</button>',
+            data:function(){
+                return data;  //每一个组件实例返回了同一个对象的引用  
+            },
+        });
+
+        var vm = new Vue({
+            el:"#app",
+        })
+
+    </script>
+</body>
+</html>

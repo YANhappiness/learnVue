@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>父组件动态想子组件传递数据</title>
+    <script type="text/javascript" src="https://cdn.bootcss.com/vue/2.2.2/vue.min.js"></script>
+</head>
+<body>
+    <div id="app">
+        <input type="text" v-model="parentMsg">
+        <child v-bind:message="parentMsg"></child>
+
+        <ol>
+            <todo-item v-for="site in sites" v-bind:todo="site"></todo-item>
+        </ol>
+    </div>
+
+    <script>
+        Vue.component("child",{
+            props:['message'],
+            template:"<span>{{message}}</span>"
+        });
+
+        Vue.component("todo-item",{
+            props:['todo'],
+            template:"<li>{{todo.text}}</li>"
+        })
+        new Vue({
+            el:"#app",
+            data:{
+                parentMsg:"parentMessage",
+                sites:[
+                    {"text":"baidu"},
+                    {"text":"google"},
+                    {"text":"yooho"},
+                    {"text":"mooc"},
+                ]
+            }
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>组件中的data</title>
+    <script src="https://cdn.bootcss.com/vue/2.2.2/vue.min.js"></script>
+</head>
+<body>
+    <div id="app">
+        <simple-component></simple-component>
+        <simple-component></simple-component>
+        <simple-component></simple-component>
+    </div>
+
+    <script type="text/javascript">
+        // 组件中的data必须是一个函数
+        Vue.component("simple-component",{
+            template:'<button v-on:click = "counter++">{{counter}}</button>',
+            data:function(){
+                return {
+                    counter:0 //通过为每个组件返回全新的数据对象来修复 共享对象的问题
+                } 
+            },
+        });
+
+        var vm = new Vue({
+            el:"#app",
+        })
+    </script>
+</body>
+</html>
