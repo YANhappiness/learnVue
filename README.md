@@ -1,8 +1,7 @@
 # learnVue
 some demo for vue 
 
-vue-router
-
+## vue-router
 0. 下载
     npm install vue-router --save-dev
 
@@ -59,3 +58,8 @@ vue-router
     });
 
 12. https://github.com/hemiahwu/vueplaylist
+
+## vue-demo1
+0.案例学习：http://jspang.com/2017/05/22/vuedemo/
+1. vue+vue-route+axios+element
+2.基本实现基础功能，增强对vue-route、钩子函数、element-ui的应用和理解。
