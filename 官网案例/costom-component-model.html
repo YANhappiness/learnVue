@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>自定义model</title>
+	<script type="text/javascript" src="https://cdn.bootcss.com/vue/2.2.2/vue.min.js"></script>
+</head>
+<body>
+
+	<div id="app">
+	    <base-check v-model="state"></base-check>
+	    <p>{{state}}</p>
+	</div>
+
+
+	<script type="text/javascript">
+		Vue.component("base-check",{
+			model:{
+				prop:'checked',
+				event:'change'
+			},
+			props:{
+				checked:Boolean
+			},
+		  template:'\
+		    <div>\
+			  	<input \
+			  	   id="check"\
+			  	   type="checkbox"\
+			  	   v-bind:checked="checked"\
+			  	   v-on:change="$emit(\'change\',$event.target.checked)"\
+			  	/>\
+			  	<label for="check">1024\'Day</label>\
+		  	</div>\
+		  '
+		});
+
+		var vm = new Vue({
+		  el: '#app',
+		  data(){
+		  	return {
+				state:false
+		    }
+		  }
+		})
+	</script>
+</body>
+</html>
