@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>将原生事件绑定到组件</title>
+	<script src="https://unpkg.com/vue"></script>
+</head>
+<body>
+
+	<div id="app">
+	    <base-input :label="input" v-on:input.native="changeFn"></base-input>
+	</div>
+
+	<script type="text/javascript">
+		Vue.component("base-input",{
+			inheritAttrs:false,
+			props:['label','value'],
+			computed:{
+				inputListeners:function(){
+					var vm = this;
+					return Object.assign({},
+						this.$listeners,{
+							input:function(event){
+								vm.$emit('input',event.target.value);
+							}
+						}
+					)
+				}
+			},
+			template:`
+				<label>
+					{{label}}
+					<input
+						v-bind="$attrs"
+						v-bind:value="value"
+						v-on="inputListeners"
+					>
+				</label>
+			`
+		});
+
+		var vm = new Vue({
+		  el: '#app',
+		  data(){
+		  	return {
+		  		input : "input text"
+		  	}
+		  },
+		  methods:{
+		  	changeFn:function(){
+		  		alert(123);
+		  	}
+		  }
+		})
+	</script>
+</body>
+</html>
