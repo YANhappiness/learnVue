@@ -18,8 +18,12 @@
 			computed:{
 				inputListeners:function(){
 					var vm = this;
+					// 将所有对象合并成一个新对象
 					return Object.assign({},
+						// 从父级添加所有的监听器
+						// 覆盖一些监听行为
 						this.$listeners,{
+							// 保证组件配合v-model的工作 
 							input:function(event){
 								vm.$emit('input',event.target.value);
 							}
